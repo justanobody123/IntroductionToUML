@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <conio.h>
 #include <windows.h>
 #include <thread>
@@ -90,7 +90,7 @@ public:
 	{
 		if (started())
 		{
-			consumptionPerSecond = CONSUMPTION * 3e-5 + CONSUMPTION * 0.0000283 * speed;//Я не знаю, насколько реалистично потребление топлива, я просто тыкала в калькулятор, пока не получила усредненные значения из интернета
+			consumptionPerSecond = CONSUMPTION * 3e-5 + CONSUMPTION * 0.0000283 * speed;//РЇ РЅРµ Р·РЅР°СЋ, РЅР°СЃРєРѕР»СЊРєРѕ СЂРµР°Р»РёСЃС‚РёС‡РЅРѕ РїРѕС‚СЂРµР±Р»РµРЅРёРµ С‚РѕРїР»РёРІР°, СЏ РїСЂРѕСЃС‚Рѕ С‚С‹РєР°Р»Р° РІ РєР°Р»СЊРєСѓР»СЏС‚РѕСЂ, РїРѕРєР° РЅРµ РїРѕР»СѓС‡РёР»Р° СѓСЃСЂРµРґРЅРµРЅРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РёР· РёРЅС‚РµСЂРЅРµС‚Р°
 		}
 		else
 		{
@@ -188,7 +188,7 @@ public:
 			controlThreads.panelThread.join();
 		}
 		system("cls");
-		cout << "Вы вышли из машины" << endl;
+		cout << "Р’С‹ РІС‹С€Р»Рё РёР· РјР°С€РёРЅС‹" << endl;
 	}
 	void panel() const
 	{
@@ -224,7 +224,7 @@ public:
 				else if (!driverInside and !speed) getIn();
 				break;
 			case Escape:
-				stopEngine();//Чтобы заджойнить поток потребления топлива
+				stopEngine();//Р§С‚РѕР±С‹ Р·Р°РґР¶РѕР№РЅРёС‚СЊ РїРѕС‚РѕРє РїРѕС‚СЂРµР±Р»РµРЅРёСЏ С‚РѕРїР»РёРІР°
 				getOut();
 				break;
 			//HW
@@ -253,7 +253,7 @@ public:
 	{
 		engine.start();
 		engine.setConsumptionPerSecond(0);
-		cout << "Двигатель запущен\n";
+		cout << "Р”РІРёРіР°С‚РµР»СЊ Р·Р°РїСѓС‰РµРЅ\n";
 		controlThreads.consumptionThread = std::thread(&Car::spendFuel, this);
 
 	}
@@ -265,7 +265,7 @@ public:
 		{
 			controlThreads.consumptionThread.join();
 		}
-		cout << "Двигатель остановлен\n";
+		cout << "Р”РІРёРіР°С‚РµР»СЊ РѕСЃС‚Р°РЅРѕРІР»РµРЅ\n";
 	}
 	void fillTank(int amount)//HW
 	{
@@ -273,7 +273,7 @@ public:
 	}
 	void speedUp()//HW
 	{
-		//Ускоряемся на 10км/ч при нажатии кнопки
+		//РЈСЃРєРѕСЂСЏРµРјСЃСЏ РЅР° 10РєРј/С‡ РїСЂРё РЅР°Р¶Р°С‚РёРё РєРЅРѕРїРєРё
 		speed += 10;
 		if (speed > MAX_SPEED)
 		{
@@ -283,7 +283,7 @@ public:
 	}
 	void slowDown()//HW
 	{
-		//Замедляемся на 10км/ч при нажатии кнопки
+		//Р—Р°РјРµРґР»СЏРµРјСЃСЏ РЅР° 10РєРј/С‡ РїСЂРё РЅР°Р¶Р°С‚РёРё РєРЅРѕРїРєРё
 		
 		if (speed > 0)
 		{
@@ -293,15 +293,15 @@ public:
 	}
 };
 //#define TANK_CHECK
-//define - определить
-//Директива дефайн создает макроопределение (макрос)
-//Директива - указание компилятору на выполнение некоторых действий
+//define - РѕРїСЂРµРґРµР»РёС‚СЊ
+//Р”РёСЂРµРєС‚РёРІР° РґРµС„Р°Р№РЅ СЃРѕР·РґР°РµС‚ РјР°РєСЂРѕРѕРїСЂРµРґРµР»РµРЅРёРµ (РјР°РєСЂРѕСЃ)
+//Р”РёСЂРµРєС‚РёРІР° - СѓРєР°Р·Р°РЅРёРµ РєРѕРјРїРёР»СЏС‚РѕСЂСѓ РЅР° РІС‹РїРѕР»РЅРµРЅРёРµ РЅРµРєРѕС‚РѕСЂС‹С… РґРµР№СЃС‚РІРёР№
 #define ENGINE_CHECK
 void main()
 {
 	setlocale(LC_ALL, "");
 
-#ifdef TANK_CHECK //Если определено TANK_CHECK, то код до директивы endif будет виден компилятору
+#ifdef TANK_CHECK //Р•СЃР»Рё РѕРїСЂРµРґРµР»РµРЅРѕ TANK_CHECK, С‚Рѕ РєРѕРґ РґРѕ РґРёСЂРµРєС‚РёРІС‹ endif Р±СѓРґРµС‚ РІРёРґРµРЅ РєРѕРјРїРёР»СЏС‚РѕСЂСѓ
 
 	Tank tank(3000);
 	Engine engine;
@@ -309,7 +309,7 @@ void main()
 	do
 	{
 		tank.info();
-		cout << "Введите объем топлива: ";
+		cout << "Р’РІРµРґРёС‚Рµ РѕР±СЉРµРј С‚РѕРїР»РёРІР°: ";
 		cin >> fuel;
 		tank.fill(fuel);
 		engine.info();
